@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | RICHKYC PRIVATE LIMITED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #0f1115;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent-color: #38bdf8; /* Sky Blue */
+            --accent-glow: rgba(56, 189, 248, 0.2);
+            --border-color: #1e293b;
+            --success: #22c55e;
+            --gradient-text: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Background Animation --- */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--border-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.05;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glow-orb {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, rgba(0,0,0,0) 70%);
+            top: -200px;
+            right: -200px;
+            z-index: -1;
+            animation: pulse 10s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+        }
+
+        /* --- Sidebar Navigation --- */
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+            height: calc(100vh - 4rem);
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-left: 2px solid transparent;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-color);
+            border-left-color: var(--accent-color);
+            background: linear-gradient(90deg, var(--accent-glow) 0%, transparent 100%);
+        }
+
+        /* --- Main Content --- */
+        main {
+            min-width: 0; /* Prevents grid blowout */
+        }
+
+        header {
+            margin-bottom: 4rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            background: rgba(56, 189, 248, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .meta-item span {
+            color: var(--text-secondary);
+        }
+
+        /* --- Sections & Cards --- */
+        section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        h2::before {
+            content: '#';
+            color: var(--accent-color);
+            font-weight: 300;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        p, li {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .highlight-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box:hover {
+            border-color: var(--accent-color);
+            transition: 0.3s;
+        }
+
+        /* --- Tables --- */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: rgba(255,255,255,0.03);
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: rgba(255,255,255,0.02);
+        }
+
+        /* --- Lists --- */
+        ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* --- Footer --- */
+        footer {
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+            padding-top: 2rem;
+            padding-bottom: 4rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .signature-block {
+            margin-top: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            border: 1px dashed var(--border-color);
+            display: inline-block;
+            padding: 2rem;
+            border-radius: 4px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                display: none; /* Hidden on tablets/mobile for simplicity, or could be a hamburger menu */
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+    <div class="glow-orb"></div>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#preamble" class="active">Preamble</a></li>
+                    <li><a href="#definitions">1. Definitions</a></li>
+                    <li><a href="#fiduciary">2. Data Fiduciary Info</a></li>
+                    <li><a href="#collection">3. Notice at Collection</a></li>
+                    <li><a href="#categories">4. Categories of Data</a></li>
+                    <li><a href="#purposes">5. Purposes of Processing</a></li>
+                    <li><a href="#consent">6. Consent Framework</a></li>
+                    <li><a href="#retention">7. Data Retention</a></li>
+                    <li><a href="#security">8. Security Measures</a></li>
+                    <li><a href="#breach">9. Data Breach Protocol</a></li>
+                    <li><a href="#rights">10. Data Principal Rights</a></li>
+                    <li><a href="#children">11. Children's Data</a></li>
+                    <li><a href="#crossborder">12. Cross-Border Transfer</a></li>
+                    <li><a href="#cookies">13. Cookies</a></li>
+                    <li><a href="#grievance">14. Grievance Redressal</a></li>
+                    <li><a href="#changes">15. Changes to Policy</a></li>
+                    <li><a href="#contact">16. Contact Info</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+            <header>
+                <h1>Privacy Policy</h1>
+                <p style="font-size: 1.1rem; color: #fff; margin-bottom: 1.5rem;">Digital Personal Data Protection Act, 2023 Compliant</p>
+                
+                <div class="meta-info">
+                    <div class="meta-item"><span>Effective Date:</span> 12 February 2026</div>
+                    <div class="meta-item"><span>Version:</span> 2.0</div>
+                    <div class="meta-item"><span>Review Date:</span> 12 February 2027</div>
+                    <div class="meta-item"><span>Jurisdiction:</span> Republic of India</div>
+                </div>
+            </header>
+
+            <section id="preamble" class="highlight-box">
+                <h2>Preamble</h2>
+                <p><strong>RICHKYC PRIVATE LIMITED</strong> (hereinafter referred to as "Company", "we", "us", or "our") is committed to protecting the privacy and security of your personal data. This Privacy Policy describes, in compliance with the <strong>Digital Personal Data Protection Act, 2023 (DPDPA)</strong> and the <strong>Digital Personal Data Protection Rules, 2025</strong>, how we collect, process, store, disclose, and protect the personal data of visitors to our corporate website (RichKYC.com) and, where applicable, users of our subsidiary brand platforms.</p>
+                <p style="border-left: 3px solid var(--accent-color); padding-left: 1rem; font-style: italic; background: rgba(56,189,248,0.05); padding: 1rem;"><strong>Important:</strong> This policy applies to the corporate parent website only. Each subsidiary brand (PaaIPay, ApnaSell, HostITS, etc.) maintains its own separate, detailed privacy policy specific to the services offered on those platforms. In the event of inconsistency, the subsidiary's privacy policy shall prevail for that specific service.</p>
+            </section>
+
+            <section id="definitions">
+                <h2>1. Definitions</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Data Principal</td>
+                                <td>The individual to whom the personal data relates. Includes the individual's guardian (in case of children) or lawful representative.</td>
+                            </tr>
+                            <tr>
+                                <td>Data Fiduciary</td>
+                                <td>RICHKYC PRIVATE LIMITED, which determines the purpose and means of processing personal data.</td>
+                            </tr>
+                            <tr>
+                                <td>Personal Data</td>
+                                <td>Any data about an individual who is identifiable by or in relation to such data.</td>
+                            </tr>
+                            <tr>
+                                <td>Processing</td>
+                                <td>Automated or manual operation performed on personal data, including collection, recording, organization, structuring, storage, adaptation, retrieval, use, disclosure, and erasure.</td>
+                            </tr>
+                            <tr>
+                                <td>Consent Manager</td>
+                                <td>An entity registered with the Data Protection Board to enable a Data Principal to give, manage, review, or withdraw consent.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="fiduciary">
+                <h2>2. Data Fiduciary Information</h2>
+                <div class="highlight-box">
+                    <div class="table-container" style="border: none; margin: 0;">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Name</strong></td>
+                                    <td>RICHKYC PRIVATE LIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>CIN</strong></td>
+                                    <td>[UXXXXXXXXX2026PTCXXXXX]</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Registered Office</strong></td>
+                                    <td>[Full Address, Kolkata]</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Email</strong></td>
+                                    <td><a href="mailto:privacy@richkyc.com" style="color: var(--accent-color);">privacy@richkyc.com</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Compliance Status</strong></td>
+                                    <td style="color: var(--success);">✅ Fully Compliant</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="collection">
+                <h2>3. Notice at Collection</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div class="highlight-box">
+                        <h3 style="margin-top:0; color: var(--success);">We Collect When:</h3>
+                        <ul>
+                            <li>You voluntarily contact us via email, contact forms, or inquiry submissions.</li>
+                            <li>You subscribe to our corporate newsletters or investor updates.</li>
+                            <li>You apply for employment through our Careers portal.</li>
+                            <li>You interact with our websites in a way that generates server logs.</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-box" style="border-color: rgba(239, 68, 68, 0.3);">
+                        <h3 style="margin-top:0; color: #f87171;">We DO NOT:</h3>
+                        <ul>
+                            <li>Collect sensitive personal data such as Aadhaar, PAN, financial account details, biometric information, caste, religion, or sexual orientation on this corporate website.</li>
+                            <li>Sell, rent, or trade your personal data to third parties.</li>
+                            <li>Use personal data for automated decision-making or profiling without explicit consent.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="categories">
+                <h2>4. Categories of Personal Data Collected</h2>
+                <h3>4.1 Data Provided Voluntarily</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data Category</th>
+                                <th>Examples</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Identity Data</td>
+                                <td>Name, designation, company name</td>
+                                <td>To identify you when you contact us</td>
+                            </tr>
+                            <tr>
+                                <td>Contact Data</td>
+                                <td>Email address, phone number, postal address</td>
+                                <td>To respond to inquiries, send updates</td>
+                            </tr>
+                            <tr>
+                                <td>Professional Data</td>
+                                <td>Resume, cover letter, employment history</td>
+                                <td>Recruitment and hiring</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>4.2 Data Collected Automatically</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data Category</th>
+                                <th>Examples</th>
+                                <th>Legal Basis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Technical Data</td>
+                                <td>IP address, browser type, device type, OS</td>
+                                <td>Legitimate interest (security)</td>
+                            </tr>
+                            <tr>
+                                <td>Usage Data</td>
+                                <td>Pages visited, time spent, click patterns</td>
+                                <td>Legitimate interest (improvement)</td>
+                            </tr>
+                            <tr>
+                                <td>Cookie Data</td>
+                                <td>Session cookies, analytics cookies</td>
+                                <td>Consent (via banner)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="purposes">
+                <h2>5. Purposes of Processing</h2>
+                <p>We process your personal data only for the following lawful purposes:</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Purpose</th>
+                                <th>Legal Basis under DPDPA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Responding to Inquiries</td>
+                                <td>Consent (implied or explicit)</td>
+                            </tr>
+                            <tr>
+                                <td>Recruitment & Hiring</td>
+                                <td>Consent, Contractual necessity</td>
+                            </tr>
+                            <tr>
+                                <td>Website Security</td>
+                                <td>Legitimate interest</td>
+                            </tr>
+                            <tr>
+                                <td>Legal Compliance</td>
+                                <td>Legal obligation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="consent">
+                <h2>6. Consent Framework</h2>
+                <div class="highlight-box">
+                    <h3>6.1 Obtaining Consent</h3>
+                    <ul>
+                        <li><strong>Explicitly:</strong> Through checkboxes, form submissions, and specific consent requests.</li>
+                        <li><strong>Implicitly:</strong> By continued use of the website after being provided with clear notice.</li>
+                    </ul>
+                    
+                    <h3>6.2 Withdrawal of Consent</h3>
+                    <p>You have the absolute right to withdraw your consent at any time.</p>
+                    <p><strong>Method:</strong> Email <a href="mailto:grievance@richkyc.com" style="color: var(--accent-color);">grievance@richkyc.com</a> with subject "WITHDRAWAL OF CONSENT".</p>
+                    <p><em>Effect of Withdrawal:</em> Upon withdrawal, we will cease processing your personal data for the consented purpose. Data processed prior to withdrawal remains lawful.</p>
+                </div>
+            </section>
+
+            <section id="retention">
+                <h2>7. Data Retention Policy</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data Category</th>
+                                <th>Retention Period</th>
+                                <th>Justification</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Contact Form Inquiries</td>
+                                <td>12 months from last communication</td>
+                                <td>Customer service, dispute resolution</td>
+                            </tr>
+                            <tr>
+                                <td>Recruitment Applications</td>
+                                <td>24 months from submission</td>
+                                <td>Future opportunities, legal defense</td>
+                            </tr>
+                            <tr>
+                                <td>Server Logs</td>
+                                <td>6 months</td>
+                                <td>Security analysis, forensic investigation</td>
+                            </tr>
+                            <tr>
+                                <td>Legal Correspondence</td>
+                                <td>10 years</td>
+                                <td>Statutory limitation period</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>Anonymization:</strong> After the retention period, data is either permanently deleted or anonymized.</p>
+            </section>
+
+            <section id="security">
+                <h2>8. Data Security Measures</h2>
+                <p>We implement the following security safeguards as required under Section 8(5) of DPDPA, 2023:</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div class="highlight-box">
+                        <h3>Technical Measures</h3>
+                        <ul>
+                            <li><strong>Encryption:</strong> TLS 1.3 for data in transit; AES-256 for data at rest.</li>
+                            <li><strong>Access Controls:</strong> Role-based access control (RBAC), principle of least privilege.</li>
+                            <li><strong>Firewalls:</strong> Web Application Firewall (WAF), DDoS protection.</li>
+                            <li><strong>Backup:</strong> Encrypted daily backups with off-site storage.</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-box">
+                        <h3>Organizational Measures</h3>
+                        <ul>
+                            <li><strong>Training:</strong> Annual data protection training for all employees.</li>
+                            <li><strong>Confidentiality:</strong> All personnel bound by confidentiality clauses.</li>
+                            <li><strong>Vendor Assessment:</strong> Third-party processors assessed for compliance.</li>
+                            <li><strong>Incident Response:</strong> Documented procedure for data breach response.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="breach">
+                <h2>9. Data Breach Protocol</h2>
+                <p>In the event of a personal data breach, the Company shall:</p>
+                <ul>
+                    <li><strong>Containment:</strong> Immediately isolate affected systems.</li>
+                    <li><strong>Assessment:</strong> Determine scope within 24 hours.</li>
+                    <li><strong>Notification:</strong> Inform Data Protection Board and Data Principals as required under Rule 8 of DPDP Rules, 2025.</li>
+                </ul>
+            </section>
+
+            <section id="rights">
+                <h2>10. Data Principal Rights</h2>
+                <div class="highlight-box">
+                    <ul style="display: grid; gap: 1rem;">
+                        <li><strong>Right to Access:</strong> Confirmation of processing, summary of data, and identities of processors.</li>
+                        <li><strong>Right to Correction:</strong> Update inaccurate, misleading, or incomplete data.</li>
+                        <li><strong>Right to Erasure:</strong> Right to be forgotten if consent is withdrawn or purpose is met.</li>
+                        <li><strong>Right to Grievance Redressal:</strong> Right to have complaints addressed promptly.</li>
+                        <li><strong>Right to Nominate:</strong> Nominate an individual to exercise rights in event of incapacity.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="children">
+                <h2>11. Children's Data</h2>
+                <p>We do not knowingly collect or process personal data of individuals below the age of <strong>18 years</strong> on this corporate website. If you believe we have inadvertently collected data of a child, please contact our Grievance Officer immediately for erasure.</p>
+            </section>
+
+            <section id="crossborder">
+                <h2>12. Cross-Border Data Transfer</h2>
+                <p>Personal data is primarily processed and stored within the geographical territory of India. We do not transfer personal data outside India unless explicitly consented or to a jurisdiction notified by the Central Government under Section 16 of DPDPA.</p>
+            </section>
+
+            <section id="cookies">
+                <h2>13. Cookies and Tracking</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cookie Type</th>
+                                <th>Purpose</th>
+                                <th>Consent Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Strictly Necessary</td>
+                                <td>Session management, security</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>Functional</td>
+                                <td>Preferences</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Analytics</td>
+                                <td>Anonymous usage statistics</td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="grievance">
+                <h2>14. Grievance Redressal Mechanism</h2>
+                <div class="highlight-box" style="border-left: 4px solid var(--accent-color);">
+                    <h3>Designated Grievance Officer</h3>
+                    <p><strong>Name:</strong> [Full Name of Appointed Officer]<br>
+                    <strong>Email:</strong> <a href="mailto:grievance@richkyc.com" style="color:var(--accent-color)">grievance@richkyc.com</a><br>
+                    <strong>Response Timeline:</strong> Within 72 hours of receipt<br>
+                    <strong>Redressal Timeline:</strong> Within 15 working days</p>
+                    
+                    <h3>Appeal</h3>
+                    <p>If you are not satisfied with the Company's response, you have the right to appeal to the <strong>Data Protection Board of India</strong> constituted under Section 18 of DPDPA, 2023.</p>
+                </div>
+            </section>
+
+            <section id="changes">
+                <h2>15. Changes to This Privacy Policy</h2>
+                <p>We reserve the right to update this Privacy Policy to reflect changes in law. Continued use of the website after the effective date constitutes acceptance of the revised policy.</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Version</th>
+                                <th>Date</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.0</td>
+                                <td>[DD/MM/2026]</td>
+                                <td>Initial Policy (IT Act compliance)</td>
+                            </tr>
+                            <tr>
+                                <td>2.0</td>
+                                <td>12/02/2026</td>
+                                <td>DPDPA 2023 comprehensive update</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>16. Contact Information</h2>
+                <p>For privacy-related inquiries not constituting grievances:</p>
+                <p><strong>Email:</strong> privacy@richkyc.com<br>
+                <strong>For statutory compliance:</strong> compliance@richkyc.com</p>
+            </section>
+
+            <section id="declaration">
+                <h2>17. Declaration</h2>
+                <p>This Privacy Policy has been adopted by the Board of Directors of RICHKYC PRIVATE LIMITED and shall be reviewed annually or upon material changes in applicable law.</p>
+                
+                <div class="signature-block">
+                    <p style="margin-bottom: 2rem;">For RICHKYC PRIVATE LIMITED</p>
+                    <p style="font-family: 'Mrs Saint Delafield', cursive; font-size: 2rem; color: var(--accent-color); margin: 1rem 0;">RichKYC Board</p>
+                    <p style="font-family: cursive;">Sumon Datta</p>
+                    <p>Sumon Datta</p>
+                </div>
+            </section>
+
+            <footer>
+                <p>&copy; 2026 RICHKYC PRIVATE LIMITED. All rights reserved.</p>
+                <p style="opacity: 0.6; margin-top: 0.5rem;">Digital Personal Data Protection Act, 2023 Compliant</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // --- Intersection Observer for Scroll Animation ---
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- Active Sidebar Link on Scroll ---
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = document.querySelectorAll('section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // --- Background Mouse Interaction (Subtle) ---
+        document.addEventListener('mousemove', (e) => {
+            const orb = document.querySelector('.glow-orb');
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            // Move orb slightly opposite to mouse
+            const moveX = (x / window.innerWidth) * 30;
+            const moveY = (y / window.innerHeight) * 30;
+            
+            orb.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
+        });
+
+    </script>
+</body>
+</html>
